@@ -13,16 +13,17 @@
 
 int main()
 {
-    int primer_numero;
-    int segundo_numero;
+    float primer_numero;
+    float segundo_numero;
 
     printf("Usuario, ingrese un numero: ");
-    scanf("%i", &primer_numero);
+    scanf("%f", &primer_numero);
 
     printf("Usuario, ingrese otro numero: ");
-    scanf("%i", &segundo_numero);
+    scanf("%f", &segundo_numero);
     
-    printf("La suma de %d y %i es %d",primer_numero, segundo_numero, primer_numero + segundo_numero);
+    printf("% .2f\n% .2f\n", primer_numero, segundo_numero);
+    //printf("La suma de %+015.0f y %f es %f\n",primer_numero, segundo_numero, primer_numero + segundo_numero);
 
     return 0;
 }
