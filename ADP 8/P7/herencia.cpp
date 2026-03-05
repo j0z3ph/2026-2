@@ -39,32 +39,67 @@ class Figura {
         return this->altura;
     }
 
-    float area() {
-        return 0.0f;
-    }
+    // Metodo abstracto
+    virtual float area() = 0;
 
 };
 
 class Rectangulo : public Figura {
+
     public:
-    Rectangulo(float base, float altura):Figura(base, altura){
-  
+    Rectangulo(float base, float altura): Figura(base, altura)
+    {
+        this->altura = altura;
+        this->base = base;
+    }
+
+    // Polimorfismo
+    // Sobreescritura
+    float area() override {
+        return this->base * this->altura;
+    }
+    // Sobrecarga
+    float area(float base, float altura) {
+        return base * altura;
     }
 };
 
 class Triangulo : public Figura {
     
+    public:
+    Triangulo(float base, float altura): Figura(base, altura)
+    {
+        this->altura = altura;
+        this->base = base;
+    }
+
+    float area() override {
+        return (this->base * this->altura) / 2.0f;
+    }
+};
+
+class Cuadrado : public Figura {
+
+    public:
+    Cuadrado(float base) : Figura(base, base)
+    {
+
+    }
 };
 
 
 int main()
 {
+    //Figura f(6,7);
     Rectangulo r(5,6);
-    Triangulo t;
+    Triangulo t(5,6);
+    Cuadrado c(7);
     r.setAltura(6.7);
     r.setBase(6.7);
     
     cout << r.area() << endl;
+    cout << r.area(5,6) << endl;
+    
     cout << t.area() << endl;
     
 
