@@ -32,7 +32,8 @@ class Figura {
     int getAltura() { return this->altura; }
 
     // Metodo
-    int area() { return 0; }
+    // Funcion virtual pura (aka abstracta)
+    virtual int area() = 0;
 
 };
 
@@ -45,7 +46,14 @@ class Rectangulo : public Figura {
     }
 
     // Sobreescritura
-    int area() { return this->base * this->altura; }
+    // POLIMORFISMO
+    int area() override { 
+        return this->base * this->altura; 
+    }
+
+    /*int erae() override {
+        return this->base * this->altura; 
+    }*/
 };
 
 class Triangulo : public Figura {
@@ -53,6 +61,10 @@ class Triangulo : public Figura {
     Triangulo(int base, int altura) : Figura(base, altura)
     {
 
+    }
+
+    int area() override { 
+        return (this->base * this->altura) / 2; 
     }
 };
 
@@ -69,6 +81,7 @@ int main()
 {
     Rectangulo r(5,6);
     Triangulo t(5,6);
+    Cuadrado c(5);
 
     
     cout << r.area() << endl;
