@@ -9,21 +9,7 @@
  * 
  */
 #include <stdio.h>
-
-
-// Declaraciones de funciones
-
-/// @brief Suma dos numeros enteros
-/// @param num1 Primer entero
-/// @param num2 Segundo entero
-/// @return La suma de los dos numeros
-int suma(int num1, int num2);
-
-/// @brief Resta dos numeros enteros
-/// @param num1 Primer numero
-/// @param num2 Segundo numero
-/// @return La resta de Primer numero menos el Segundo numero
-int resta(int num1, int num2);
+#include "biblioteca.h"
 
 int main()
 {
@@ -37,14 +23,3 @@ int main()
     return 0;
 }
 
-
-// Definiciones
-int suma(int num1, int num2) {
-    int resultado;
-    resultado = num1 + num2;
-    return resultado;
-}
-
-int resta(int num1, int num2){
-    return num1 - num2;
-}
