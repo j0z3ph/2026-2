@@ -18,6 +18,7 @@ class AnalogReadThread(QThread):
         while self.bandera:
             analog_value = self.esp32.analogRead(self.port)
             self.lectura.emit(analog_value)
+            
     def stop(self):
         self.bandera = False
         self.wait()
@@ -27,7 +28,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
         
-        self.esp32 = sc.Board('/dev/cu.usbserial-110')
+        self.esp32 = sc.Board('/dev/cu.SimpleController-BT')
         self.esp32.pinMode(15, sc.INPUT)
         self.hilo = AnalogReadThread(self.esp32, 15)
         self.hilo.lectura.connect(self.imprime_analog)
@@ -35,6 +36,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     def imprime_analog(self, value:float):
         self.progressBar.setValue(int(value * 100))
+        
+    def closeEvent(self, event):
+        self.hilo.stop()
+        self.esp32.close()
+        return super().closeEvent(event)
     
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
