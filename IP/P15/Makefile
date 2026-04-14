@@ -7,6 +7,9 @@ run2: conta.exe
 run3: arreglos.exe
 	./arreglos.exe
 
+run4: elmasgrande.exe
+	./elmasgrande.exe
+
 # programa 1
 facto.exe: factorial.c biblioteca.o biblioteca.h
 	gcc factorial.c biblioteca.o -o facto.exe
@@ -21,3 +24,7 @@ conta.exe: conta.c biblioteca.o biblioteca.h
 # programa 3
 arreglos.exe: arreglos.c biblioteca.o biblioteca.h
 	gcc arreglos.c biblioteca.o -o arreglos.exe
+
+# programa 4
+elmasgrande.exe: elmasgrande.c biblioteca.o biblioteca.h
+	gcc elmasgrande.c biblioteca.o -o elmasgrande.exe
