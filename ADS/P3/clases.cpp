@@ -13,15 +13,46 @@
 using namespace std;
 
 class Persona {
-    public:
+    private:
     // Atributos
     string nombre;
     string apellido1;
-
-    private:
     string apellido2;
+    int edad;
 
+    public:
     // Metodos
+    
+    // Setters
+    void setNombre(string nombre) {
+        this->nombre = nombre;
+    }
+    void setApellido1(string ap) {
+        this->apellido1 = ap;
+    }
+    void setApellido2(string ap) {
+        this->apellido2 = ap;
+    }
+    bool setEdad(int edad) {
+        if(edad <= 0 || edad >100) {
+            //cout << "Edad no valida" << endl; // NO HACER!!
+            return false;
+        } else {
+            this->edad = edad;
+            return true;
+        }
+    }
+
+    // Getters
+    string getNombre() {
+        return this->nombre;
+    }
+    string getApellido1() {
+        return this->apellido1;
+    }
+    string getApellido2() {
+        return this->apellido2;
+    }
 };
 
 
@@ -31,10 +62,11 @@ int main()
     Persona persona;
     string cadena;
 
-    persona.nombre = "Roy";
-    persona.apellido1 = "Murillo";
-    persona.apellido2 = "Orozco";
-
+    persona.setNombre("Angel");
+    persona.setApellido1("Castillo");
+    persona.setApellido2("Moreno");
+    
+    persona.setEdad(-100);
     
     return 0;
 }
